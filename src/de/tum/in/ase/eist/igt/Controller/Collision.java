@@ -1,4 +1,4 @@
-package Controller;
+package de.tum.in.ase.eist.igt.Controller;
 
 public class Collision {
     private final boolean hasCollided;

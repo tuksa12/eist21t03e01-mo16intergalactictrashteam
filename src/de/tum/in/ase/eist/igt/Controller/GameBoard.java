@@ -1,7 +1,7 @@
-package Controller;
+package de.tum.in.ase.eist.igt.Controller;
 
-import Model.Obstacles;
-import View.GameView;
+import de.tum.in.ase.eist.igt.Model.Obstacles;
+import de.tum.in.ase.eist.igt.View.GameView;
 
 import java.util.List;
 
@@ -11,6 +11,7 @@ public class GameBoard {
     private GameView gameView;
     private boolean running;
 
+    // de.tum.in.ase.eist.igt
 
     public void startGame(){
         running = true;

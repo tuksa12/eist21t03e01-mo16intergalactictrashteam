@@ -1,4 +1,4 @@
-package Model;
+package de.tum.in.ase.eist.igt.Model;
 
 public abstract class Obstacles {
     int gravity;
