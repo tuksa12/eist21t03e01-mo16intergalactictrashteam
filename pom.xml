@@ -6,6 +6,18 @@
     <artifactId>T03E01-Implementation-Exercise</artifactId>
     <packaging>jar</packaging>
     <version>1.0</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>16</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>16</version>
+        </dependency>
+    </dependencies>
     <name>T03E01-Implementation Exercise</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
