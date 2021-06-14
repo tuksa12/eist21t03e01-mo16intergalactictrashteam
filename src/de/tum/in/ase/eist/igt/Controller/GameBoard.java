@@ -60,8 +60,8 @@ public class GameBoard { //TODO
         return gameOutcome;
     }
 
-    public List<Obstacles> getObstacles() {
-        return this.obstacles;
+    public List<Debris> getDebris() {
+        return this.debris;
     }
 
     public SpaceCraft getPlayerSpaceCraft() {
@@ -101,8 +101,6 @@ public class GameBoard { //TODO
                 Car loser = collision.evaluateLoser();
                 printWinner(winner);
                 loserCars.add(loser);
-
-                this.audioPlayer.playCrashSound();
 
                 loser.crunch();
 
