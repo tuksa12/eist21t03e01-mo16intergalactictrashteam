@@ -39,9 +39,9 @@ public class GalacticGarbagemenApplication extends Application {
 
 		// scene and stages
 		Scene scene = new Scene(gridLayout);
-		primaryStage.setTitle("Bumpers");
+		primaryStage.setTitle("Galactic Garbagemen");
 		primaryStage.setScene(scene);
-		//primaryStage.setOnCloseRequest(closeEvent -> gameBoardUI.stopGame());
+		primaryStage.setOnCloseRequest(closeEvent -> gameBoardUI.stopGame());
 		primaryStage.show();
 	}
 
@@ -58,7 +58,7 @@ public class GalacticGarbagemenApplication extends Application {
 		// add all components to the gridLayout
 		// second parameter is column index, second parameter is row index of grid
 		gridLayout.add(gameBoardUI, 0, 1);
-		// gridLayout.add(toolBar, 0, 0);
+		gridLayout.add(toolBar, 0, 0);
 		return gridLayout;
 	}
 

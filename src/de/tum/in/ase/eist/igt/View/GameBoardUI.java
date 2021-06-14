@@ -21,7 +21,8 @@ import java.util.TimerTask;
  */
 public class GameBoardUI extends Canvas {
 
-	private static final Color BACKGROUND_COLOR = Color.WHITE;
+	private static final Color BACKGROUND_COLOR = Color.BLACK;
+	private static final String BACKGROUND_IMAGE_FILE = "planet.png";
 	/**
 	 * The update period of the game in ms, this gives us 25 fps.
 	 */
