@@ -1,7 +1,6 @@
 package de.tum.in.ase.eist.igt.Controller;
 
 import de.tum.in.ase.eist.igt.Model.Debris;
-import de.tum.in.ase.eist.igt.Model.Obstacles;
 import de.tum.in.ase.eist.igt.Model.SpaceCraft;
 
 public class Collision { //TODO

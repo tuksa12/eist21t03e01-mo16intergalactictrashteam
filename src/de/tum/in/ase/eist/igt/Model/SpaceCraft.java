@@ -4,13 +4,17 @@ package de.tum.in.ase.eist.igt.Model;
 public class SpaceCraft extends Object {
 
     private int lifePoints;
+    private static final String SPACE_CRAFT_IMAGE_FILE = "SpaceCraft 2.png";
+    private static final int SPACE_CRAFT_HEIGHT = 25;
+    private static final int SPACE_CRAFT_WIDTH = 25;
+    private String iconLocation;
 
-    public SpaceCraft(int startX, int startY, int mass) {
-        super(startX, startY, mass);
+    public SpaceCraft(double startX, double startY, int mass, int width, int height) {
+        super(startX, startY, mass, SPACE_CRAFT_WIDTH, SPACE_CRAFT_HEIGHT, SPACE_CRAFT_IMAGE_FILE);
         this.lifePoints = 3;
     }
     /*
-    it moves the spacecraft according to the input from the Player class
+    TODO: setIconLocation() method must be added for the spacecraft icon
      */
     public void steer() {}
 
@@ -19,7 +23,7 @@ public class SpaceCraft extends Object {
     }
 
     public void shoot() {
-        Shot shot = new Shot(this.getPosition()[0], this.getPosition()[1]);
+        Shot shot = new Shot(this.getPosition().getX(), this.getPosition().getY());
     }
 
     public int getLifePoints() { return this.lifePoints; }

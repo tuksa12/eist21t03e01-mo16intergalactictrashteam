@@ -1,7 +1,7 @@
 package de.tum.in.ase.eist.igt.Controller;
 
 import de.tum.in.ase.eist.igt.Model.Debris;
-import de.tum.in.ase.eist.igt.Model.Obstacles;
+import de.tum.in.ase.eist.igt.Model.GameObject;
 import de.tum.in.ase.eist.igt.Model.Planet;
 import de.tum.in.ase.eist.igt.Model.SpaceCraft;
 import de.tum.in.ase.eist.igt.View.GameView;

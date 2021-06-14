@@ -177,25 +177,20 @@ public class GameBoardUI extends Canvas {
 		// paint planet picture
         getGraphicsContext2D().drawImage(this.imageCache.get(PLANET_IMAGE_FILE), PLANET_X_POSITION, PLANET_Y_POSITION, PLANET_SIZE, PLANET_SIZE);
 
-		/*for (Obstacles object : this.gameBoard.getObstacles()) {
-			paintCar(object);
-		}*/
+		for (GameObject gameObject : this.gameBoard.getGameObjects()) {
+			getGraphicsContext2D().drawImage(this.imageCache.get(gameObject.getIconLocation()), gameObject.getPosition().getX(),
+					gameObject.getPosition().getY(), gameObject.getSize().getWidth(), gameObject.getSize().getHeight());
+		}
 
-		// render player car
-		// paintCar(this.gameBoard.getPlayerCar());
 	}
 
-	/**
-	 * Show image of a car at the current position of the car.
-	 *
-	 * @param obstacle to be drawn
-	 */
-	/*private void paintObstace(Obstacles obstacle) {
-		Point2D carPosition = obstacle.getPosition();
 
-		getGraphicsContext2D().drawImage(this.imageCache.get(obstacle.getIconLocation()), carPosition.getX(),
-				carPosition.getY(), obstacle.getSize().getWidth(), obstacle.getSize().getHeight());
-	}*/
+//	private void  paintObstacle(GameObject object){
+//		Point2D carPosition = object.getPosition();
+//
+//		getGraphicsContext2D().drawImage(this.imageCache.get(), carPosition.getX(),
+//				carPosition.getY(), car.getSize().getWidth(), car.getSize().getHeight());
+//	}
 
 	/**
 	 * Method used to display alerts in moveCars().

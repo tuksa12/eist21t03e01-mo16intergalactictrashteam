@@ -4,22 +4,25 @@ public class Planet extends Object {
 
     private final double gravity;
 
-    public Planet(int startX, int startY, int mass) {
-        super(startX, startY, mass);
+    private static final int PLANET_HEIGHT = 25;
+    private static final int PLANET_WIDTH = 25;
+
+    public Planet(double startX, double startY, int mass) {
+        super(startX, startY, mass, PLANET_WIDTH, PLANET_HEIGHT, PLANET_IMAGE_FILE);
         this.gravity = 2;
     }
 
     /*
     this methods takes a object as a parameter (either a Debris object or the spacecraft) and returns the gravitational pull on that object
      */
-    public double gravityAttraction(Object obj) {
+    public double gravityAttraction(GameObject obj) {
         double gravityValue = gravity * this.getMass() * obj.getMass();
         double distance = Math.hypot(this.getPosition()[0] - obj.getPosition()[0], this.getPosition()[1] - obj.getPosition()[1]);
         return gravityValue/distance;
     }
 
-    public boolean closeEnough(Object obj) {
-        double distance = Math.hypot(this.getPosition()[0] - obj.getPosition()[0], this.getPosition()[1] - obj.getPosition()[1]);
+    public boolean closeEnough(GameObject obj) {
+        double distance = Math.hypot(this.getPosition().getX() - obj.getPosition().getX(), this.getPosition().getY() - obj.getPosition().getY());
 
         if (distance <= 2.5) {
             return true;

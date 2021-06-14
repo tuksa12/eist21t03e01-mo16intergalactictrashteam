@@ -24,6 +24,7 @@ public class MouseSteering {
 	public MouseSteering(GameBoardUI gameBoardUI, SpaceCraft userSpaceCraft) {
 		this.spaceCraft = userSpaceCraft;
 		//gameBoardUI.addEventHandler(MouseEvent.MOUSE_PRESSED, this::mousePressed);
+
 	}
 
 	/*private void mousePressed(MouseEvent clickEvent) {
