@@ -15,14 +15,18 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * This class implements the user interface for steering the player car. The
- * user interface is implemented as a Thread that is started by clicking the
- * start button on the tool bar and stops by the stop button.
+ * This class implements the user interface for steering the player spacecraft.
+ * The user interface is implemented as a Thread that is started by clicking the start button on the tool bar and stops
+ * by the stop button.
  */
 public class GameBoardUI extends Canvas {
 
 	private static final Color BACKGROUND_COLOR = Color.BLACK;
-	private static final String BACKGROUND_IMAGE_FILE = "planet.png";
+	private static final String PLANET_IMAGE_FILE = "resources/planet.png";
+    private static final int PLANET_SIZE = 100;
+    private static final int PLANET_X_POSITION = 100;
+    private static final int PLANET_Y_POSITION = 100;
+
 	/**
 	 * The update period of the game in ms, this gives us 25 fps.
 	 */
@@ -169,6 +173,9 @@ public class GameBoardUI extends Canvas {
 	private void paint() {
 		getGraphicsContext2D().setFill(BACKGROUND_COLOR);
 		getGraphicsContext2D().fillRect(0, 0, getWidth(), getHeight());
+
+		// paint planet picture
+        getGraphicsContext2D().drawImage(this.imageCache.get(PLANET_IMAGE_FILE), PLANET_X_POSITION, PLANET_Y_POSITION, PLANET_SIZE, PLANET_SIZE);
 
 		/*for (Obstacles object : this.gameBoard.getObstacles()) {
 			paintCar(object);
