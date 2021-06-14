@@ -74,7 +74,7 @@ public class GameBoardUI extends Canvas {
 
 	private void setupGameBoard() {
 		Dimension2D size = getPreferredSize();
-		this.gameBoard = new GameBoard(); //size
+		this.gameBoard = new GameBoard(size);
 		/*this.gameBoard.setAudioPlayer(new AudioPlayer());*/
 		widthProperty().set(size.getWidth());
 		heightProperty().set(size.getHeight());
@@ -134,32 +134,32 @@ public class GameBoardUI extends Canvas {
 		this.gameTimer.scheduleAtFixedRate(timerTask, UPDATE_PERIOD, UPDATE_PERIOD);
 	}
 
-	/*private void updateGame() {
+	private void updateGame() {
 		if (gameBoard.isRunning()) {
 			// updates car positions and re-renders graphics
 			this.gameBoard.update();
 			// when this.gameBoard.getOutcome() is OPEN, do nothing
-			if (this.gameBoard.getGameOutcome() == GameOutcome.LOST) {
+			/*if (this.gameBoard.getGameOutcome() == GameOutcome.LOST) {
 				showAsyncAlert("Oh.. you lost.");
 				this.stopGame();
 			} else if (this.gameBoard.getGameOutcome() == GameOutcome.WON) {
 				showAsyncAlert("Congratulations! You won!!");
 				this.stopGame();
-			}
+			}*/
 			paint();
 		}
-	}*/
+	}
 
 	/**
 	 * Stops the game board and set the tool bar to default values.
 	 */
-	/*public void stopGame() {
+	public void stopGame() {
 		if (this.gameBoard.isRunning()) {
 			this.gameBoard.stopGame();
 			this.gameToolBar.updateToolBarStatus(false);
 			this.gameTimer.cancel();
 		}
-	}*/
+	}
 
 	/**
 	 * Render the graphics of the whole game by iterating through the cars of the

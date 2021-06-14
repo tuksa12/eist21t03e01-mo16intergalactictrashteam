@@ -24,7 +24,7 @@ public class Player { //TODO
 
     public void setup() {
         // The player always starts in the upper left corner facing to the right
-        spaceCraft.setPosition(START_X_COORDINATE, START_Y_COORDINATE);
-        spaceCraft.setDirection(START_DIRECTION);
+        /*spaceCraft.setPosition(START_X_COORDINATE, START_Y_COORDINATE);
+        spaceCraft.setDirection(START_DIRECTION);*/
     }
 }

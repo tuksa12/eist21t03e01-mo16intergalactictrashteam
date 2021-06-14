@@ -21,7 +21,7 @@ public class Collision { //TODO
     }
 
     public boolean detectCollision() {
-        Point2D p1 = car1.getPosition();
+        /*Point2D p1 = car1.getPosition();
         Dimension2D d1 = car1.getSize();
 
         Point2D p2 = car2.getPosition();
@@ -32,13 +32,14 @@ public class Collision { //TODO
         boolean right = p1.getX() + d1.getWidth() < p2.getX();
         boolean left = p1.getX() > p2.getX() + d2.getWidth();
 
-        return !above && !below && !right && !left;
+        return !above && !below && !right && !left;*/
+        return false;
     }
 
-    public Obstacles evaluate() { // ??? How to evaluate collision: Lives?
+    public void evaluate() { // ??? How to evaluate collision: Lives?
                                   // Make SpaceCraft an obstacle??
 
-        Point2D p1 = this.car1.getPosition();
+        /*Point2D p1 = this.car1.getPosition();
         Point2D p2 = this.car2.getPosition();
 
         Car winnerCar = null;
@@ -47,15 +48,15 @@ public class Collision { //TODO
         } else {
             winnerCar = this.car1;
         }
-        return winnerCar;
+        return winnerCar;*/
     }
 
-    public Obstacles evaluateLoser() {
+    /*public Obstacles evaluateLoser() {
         Car winner = evaluate();
         if (this.car1 == winner) {
             return this.car2;
         }
         return this.car1;
-    }
+    }*/
 
 }

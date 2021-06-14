@@ -23,7 +23,7 @@ public class GameToolBar extends ToolBar {
 	/**
 	 * Initializes the actions of the toolbar buttons.
 	 */
-	/*public void initializeActions(GameBoardUI gameBoardUI) {
+	public void initializeActions(GameBoardUI gameBoardUI) {
 		this.start.setOnAction(event -> gameBoardUI.startGame());
 
 		this.stop.setOnAction(event -> {
@@ -48,7 +48,7 @@ public class GameToolBar extends ToolBar {
 				gameBoardUI.startGame();
 			}
 		});
-	}*/
+	}
 
 	/**
 	 * Updates the status of the toolbar. This will for example enable or disable

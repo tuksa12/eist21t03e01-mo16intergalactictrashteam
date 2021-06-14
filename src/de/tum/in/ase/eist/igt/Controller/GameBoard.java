@@ -29,19 +29,19 @@ public class GameBoard { //TODO
 
     public GameBoard(Dimension2D size) {
         this.size = size;
-        SpaceCraft playerCar = new SpaceCraft(size);
-        this.player = new Player(playerCar);
-        this.player.setup();
+        //SpaceCraft playerCar = new SpaceCraft(size);
+        //this.player = new Player(playerCar);
+        //this.player.setup();
         createObstacles();
     }
 
     private void createObstacles() {
-        for (int i = 0; i < NUMBER_OF_DEBRIS; i++) {
+        /*for (int i = 0; i < NUMBER_OF_DEBRIS; i++) {
             this.debris.add(new Debris(this.size));
         }
         for (int i = 0; i < NUMBER_OF_PLANETS; i++) {
             this.planets.add(new Planet(this.size));
-        }
+        }*/
     }
 
     public Dimension2D getSize() {
@@ -82,7 +82,7 @@ public class GameBoard { //TODO
 
     public void moveObstacles() {
         // update the positions of the player car and the autonomous cars
-        for (Debris debris : this.debris) {
+        /*for (Debris debris : this.debris) {
             debris.drive(size);
         }
         this.player.getSpaceCraft().drive(size);
@@ -111,7 +111,7 @@ public class GameBoard { //TODO
                 }
 
             }
-        }
+        }*/
     }
 
 
