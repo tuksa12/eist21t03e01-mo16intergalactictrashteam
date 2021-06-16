@@ -14,8 +14,7 @@ public class GameBoard { //TODO
     private static final int NUMBER_OF_DEBRIS = 5;
     private static final int NUMBER_OF_PLANETS = 3;
 
-    private final List<Debris> debris = new ArrayList<>();
-    private final List<Planet> planets = new ArrayList<>();
+    private final List<GameObject> gameObjects;
 
     private Player player;
 
@@ -29,19 +28,21 @@ public class GameBoard { //TODO
 
     public GameBoard(Dimension2D size) {
         this.size = size;
-        //SpaceCraft playerCar = new SpaceCraft(size);
-        //this.player = new Player(playerCar);
+        this.gameObjects = new ArrayList<GameObject>();
+        //SpaceCraft playerCraft = new SpaceCraft();
+        //this.player = new Player(playerCraft);
         //this.player.setup();
         createObstacles();
     }
 
     private void createObstacles() {
-        /*for (int i = 0; i < NUMBER_OF_DEBRIS; i++) {
-            this.debris.add(new Debris(this.size));
-        }
-        for (int i = 0; i < NUMBER_OF_PLANETS; i++) {
-            this.planets.add(new Planet(this.size));
+        /*for (int i = 0; i < NUMBER_OF_PLANETS; i++) {
+            this.gameObjects.add(new Planet(this.size));
         }*/
+
+        this.gameObjects.add(new Planet(100.0, 100.0, 42));
+        this.gameObjects.add(new Planet(500.0, 350.0, 9000));
+        //this.gameObjects.add(new SpaceCraft(25.0, 20.0, 10, 25, 25));
     }
 
     public Dimension2D getSize() {
@@ -60,8 +61,8 @@ public class GameBoard { //TODO
         return gameOutcome;
     }
 
-    public List<Debris> getDebris() {
-        return this.debris;
+    public List<GameObject> getGameObjects() {
+        return this.gameObjects;
     }
 
     public SpaceCraft getPlayerSpaceCraft() {
