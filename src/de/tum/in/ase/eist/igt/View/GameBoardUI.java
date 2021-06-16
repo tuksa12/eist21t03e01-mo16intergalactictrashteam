@@ -3,6 +3,8 @@ package de.tum.in.ase.eist.igt.View;
 import de.tum.in.ase.eist.igt.Controller.Dimension2D;
 import de.tum.in.ase.eist.igt.Controller.GameBoard;
 import de.tum.in.ase.eist.igt.Controller.MouseSteering;
+import de.tum.in.ase.eist.igt.Controller.Point2D;
+import de.tum.in.ase.eist.igt.Model.GameObject;
 import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Alert;
@@ -22,10 +24,6 @@ import java.util.TimerTask;
 public class GameBoardUI extends Canvas {
 
 	private static final Color BACKGROUND_COLOR = Color.BLACK;
-	private static final String PLANET_IMAGE_FILE = "resources/planet.png";
-    private static final int PLANET_SIZE = 100;
-    private static final int PLANET_X_POSITION = 100;
-    private static final int PLANET_Y_POSITION = 100;
 
 	/**
 	 * The update period of the game in ms, this gives us 25 fps.
@@ -38,6 +36,7 @@ public class GameBoardUI extends Canvas {
 	public static Dimension2D getPreferredSize() {
 		return DEFAULT_SIZE;
 	}
+
 
 	/**
 	 * Timer responsible for updating the game every frame that runs in a separate
@@ -88,22 +87,22 @@ public class GameBoardUI extends Canvas {
 
 	private void setupImageCache() {
 		this.imageCache = new HashMap<>();
-		/*for (Car car : this.gameBoard.getCars()) {
-			String imageLocation = car.getIconLocation();
+		for (GameObject gameObject : this.gameBoard.getGameObjects()) {
+			String imageLocation = gameObject.getIconLocation();
 			this.imageCache.computeIfAbsent(imageLocation, this::getImage);
 		}
-		String playerImageLocation = this.gameBoard.getPlayerCar().getIconLocation();
-		this.imageCache.put(playerImageLocation, getImage(playerImageLocation));*/
+		String playerImageLocation = this.gameBoard.getGameObjects().get(0).getIconLocation();
+		this.imageCache.put(playerImageLocation, getImage(playerImageLocation));
 	}
 
 	/**
 	 * Sets the car's image.
 	 *
-	 * @param carImageFilePath an image file path that needs to be available in the
+	 * @param imageFilePath an image file path that needs to be available in the
 	 *                         resources folder of the project
 	 */
-	private Image getImage(String carImageFilePath) {
-		URL carImageUrl = getClass().getClassLoader().getResource(carImageFilePath);
+	private Image getImage(String imageFilePath) {
+		URL carImageUrl = getClass().getClassLoader().getResource(imageFilePath);
 		if (carImageUrl == null) {
 			throw new IllegalArgumentException(
 					"Please ensure that your resources folder contains the appropriate files for this exercise.");
@@ -170,12 +169,9 @@ public class GameBoardUI extends Canvas {
 	 * Render the graphics of the whole game by iterating through the cars of the
 	 * game board at render each of them individually.
 	 */
-	private void paint() {
+	private void paint() { //TODO Rapha: Make it work for multiple planets
 		getGraphicsContext2D().setFill(BACKGROUND_COLOR);
 		getGraphicsContext2D().fillRect(0, 0, getWidth(), getHeight());
-
-		// paint planet picture
-        getGraphicsContext2D().drawImage(this.imageCache.get(PLANET_IMAGE_FILE), PLANET_X_POSITION, PLANET_Y_POSITION, PLANET_SIZE, PLANET_SIZE);
 
 		for (GameObject gameObject : this.gameBoard.getGameObjects()) {
 			getGraphicsContext2D().drawImage(this.imageCache.get(gameObject.getIconLocation()), gameObject.getPosition().getX(),

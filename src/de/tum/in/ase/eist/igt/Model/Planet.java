@@ -1,7 +1,8 @@
 package de.tum.in.ase.eist.igt.Model;
 
-public class Planet extends Object {
+public class Planet extends StationaryObject {
 
+    private static final String PLANET_IMAGE_FILE = "planet.png";
     private final double gravity;
 
     private static final int PLANET_HEIGHT = 25;
@@ -17,7 +18,7 @@ public class Planet extends Object {
      */
     public double gravityAttraction(GameObject obj) {
         double gravityValue = gravity * this.getMass() * obj.getMass();
-        double distance = Math.hypot(this.getPosition()[0] - obj.getPosition()[0], this.getPosition()[1] - obj.getPosition()[1]);
+        double distance = Math.hypot(this.getPosition().getX() - obj.getPosition().getX(), this.getPosition().getY() - obj.getPosition().getY());
         return gravityValue/distance;
     }
 

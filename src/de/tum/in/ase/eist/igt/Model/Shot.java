@@ -1,6 +1,6 @@
 package de.tum.in.ase.eist.igt.Model;
 
-public class Shot extends Object{
+public class Shot extends MovableObject {
 
     private double speed;
     private static final String SHOT_IMAGE_FILE = "Lazer.png";

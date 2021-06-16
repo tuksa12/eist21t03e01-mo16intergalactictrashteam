@@ -1,6 +1,7 @@
 package de.tum.in.ase.eist.igt.Model;
 
-public class Debris extends Object {
+public class Debris extends MovableObject{
+
     private int[] movement;
     private static final String DEBRIS_IMAGE_FILE = "Debris.png";
 
@@ -27,4 +28,5 @@ public class Debris extends Object {
     destroys this debris
      */
     public void evaporate(){}
+
 }

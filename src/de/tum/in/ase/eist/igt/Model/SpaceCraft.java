@@ -1,7 +1,7 @@
 package de.tum.in.ase.eist.igt.Model;
 
 
-public class SpaceCraft extends Object {
+public class SpaceCraft extends MovableObject {
 
     private int lifePoints;
     private static final String SPACE_CRAFT_IMAGE_FILE = "SpaceCraft 2.png";
@@ -27,4 +27,11 @@ public class SpaceCraft extends Object {
     }
 
     public int getLifePoints() { return this.lifePoints; }
+
+    public void setIconLocation(String iconLocation) {
+        if (iconLocation == null) {
+            throw new NullPointerException("The chassis image of a car cannot be null.");
+        }
+        this.iconLocation = iconLocation;
+    }
 }
