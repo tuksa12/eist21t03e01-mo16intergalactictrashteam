@@ -2,16 +2,13 @@ package de.tum.in.ase.eist.igt.Model;
 
 public class Planet extends StationaryObject {
 
-    private static final String PLANET_IMAGE_FILE = "planet.png";
     private final double gravity;
 
-    private static final int PLANET_HEIGHT = 25;
-    private static final int PLANET_WIDTH = 25;
-
-    public Planet(double startX, double startY, int mass) {
-        super(startX, startY, mass, PLANET_WIDTH, PLANET_HEIGHT, PLANET_IMAGE_FILE);
+    public Planet(double startX, double startY, int mass, int planet_width, int planet_height, String fileName) {
+        super(startX, startY, mass, planet_width, planet_height, fileName);
         this.gravity = 2;
     }
+
 
     /*
     this methods takes a object as a parameter (either a Debris object or the spacecraft) and returns the gravitational pull on that object

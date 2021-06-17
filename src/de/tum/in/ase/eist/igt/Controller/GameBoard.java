@@ -40,8 +40,8 @@ public class GameBoard { //TODO
             this.gameObjects.add(new Planet(this.size));
         }*/
 
-        this.gameObjects.add(new Planet(100.0, 100.0, 42));
-        this.gameObjects.add(new Planet(500.0, 350.0, 9000));
+        this.gameObjects.add(new Planet(100.0, 100.0, 42, 30,30,"planet.png"));
+        this.gameObjects.add(new Planet(200.0, 200.0, 9000,30,30,"planet-brown.png"));
         //this.gameObjects.add(new SpaceCraft(25.0, 20.0, 10, 25, 25));
     }
 

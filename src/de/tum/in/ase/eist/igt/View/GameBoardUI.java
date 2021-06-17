@@ -169,7 +169,7 @@ public class GameBoardUI extends Canvas {
 	 * Render the graphics of the whole game by iterating through the cars of the
 	 * game board at render each of them individually.
 	 */
-	private void paint() { //TODO Rapha: Make it work for multiple planets
+	private void paint() { //Done Rapha: Make it work for multiple planets
 		getGraphicsContext2D().setFill(BACKGROUND_COLOR);
 		getGraphicsContext2D().fillRect(0, 0, getWidth(), getHeight());
 
