@@ -6,7 +6,7 @@ public class SpaceCraft extends MovableObject {
     private int lifePoints;
     private static final double START_X_COORDINATE = 250.0;
     private static final double START_Y_COORDINATE = 250.0;
-    private static final int START_DIRECTION = 90;
+    private static final int START_DIRECTION = 180;
     private static final String SPACE_CRAFT_IMAGE_FILE = "spacecraft.png";
     private static final int SPACE_CRAFT_HEIGHT = 25;
     private static final int SPACE_CRAFT_WIDTH = 25;
@@ -21,20 +21,11 @@ public class SpaceCraft extends MovableObject {
     }
 
     /**
-     * TODO: setIconLocation() method must be added for the spacecraft icon
-     */
-    public void steer() {}
-
-    public void processInput() {
-
-    }
-
-    /**
      * TODO: determine direction
      * */
-    /*public void shoot() {
-        Shot shot = new Shot(this.getPosition().getX(), this.getPosition().getY());
-    }*/
+    public void shoot() {
+        Shot shot = new Shot(this.getPosition().getX(), this.getPosition().getY(), this.getDirection());
+    }
 
     public int getLifePoints() { return this.lifePoints; }
 

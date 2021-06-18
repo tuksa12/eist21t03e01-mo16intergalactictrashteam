@@ -36,6 +36,6 @@ public class Debris extends MovableObject{
     /**
      * Destroys this debris when collided with a planet and tags it for removal from the game board.
      */
-    public void evaporate(){ this.setOnBoard(false); }
+    public void evaporate(){ this.tagOffBoard(); }
 
 }

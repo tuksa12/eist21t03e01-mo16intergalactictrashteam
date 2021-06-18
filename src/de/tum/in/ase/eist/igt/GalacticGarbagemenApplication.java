@@ -1,18 +1,21 @@
 package de.tum.in.ase.eist.igt;
 
+import de.tum.in.ase.eist.igt.Controller.KeyboardInput;
 import de.tum.in.ase.eist.igt.View.GameBoardUI;
 import de.tum.in.ase.eist.igt.View.GameToolBar;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
- * Starts the Bumpers Application, loads the GameToolBar and GameBoardUI. This
- * class is the root of the JavaFX Application.
+ * Starts the Bumpers Application, loads the GameToolBar and GameBoardUI. This class is the root of the JavaFX
+ *  Application.
  *
  * @see Application
  */
@@ -23,11 +26,12 @@ public class GalacticGarbagemenApplication extends Application {
 	private static final int GRID_LAYOUT_PREF_WIDTH = 505;
 
 	/**
-	 * Starts the Bumpers Window by setting up a new tool bar, a new user interface
-	 * and adding them to the stage.
+	 * Starts the Bumpers Window by setting up a new tool bar, a new user interface and adding them to the stage.
 	 *
-	 * @param primaryStage the primary stage for this application, onto which the
-	 *                     application scene can be set.
+     * @implNote Currently handles keyboard input due to not finding the Bug with using KeyboardInput.keyPressed() in
+     *  GameBoardUI.
+     *
+	 * @param primaryStage the primary stage for this application, onto which the application scene can be set.
 	 */
 	@Override
 	public void start(Stage primaryStage) {
@@ -45,8 +49,25 @@ public class GalacticGarbagemenApplication extends Application {
 		primaryStage.setOnCloseRequest(closeEvent -> gameBoardUI.stopGame());
 		primaryStage.show();
 
-		// d
-        gameBoardUI.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {System.out.println(key.getCharacter()); });
+		/* keyboard input handling
+		 * Note: somehow the .addEventHandler() only recognizes keyboard input when invoked on Scene and not on
+		 *  GameBoardUI, therefore we opted for fixing this bug here but try to find a better solution. */
+        scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+            switch (key.getCode()) {
+                case W, UP -> {
+                    gameBoardUI.getGameBoard().getPlayerSpaceCraft().accelerate();
+                }
+                case S, DOWN -> {
+                    gameBoardUI.getGameBoard().getPlayerSpaceCraft().decelerate();
+                }
+                case A, LEFT -> {
+                    gameBoardUI.getGameBoard().getPlayerSpaceCraft().setDirection(3);
+                }
+                case D, RIGHT -> {
+                    gameBoardUI.getGameBoard().getPlayerSpaceCraft().setDirection(-3);
+                }
+            }
+        });
 	}
 
 	/**

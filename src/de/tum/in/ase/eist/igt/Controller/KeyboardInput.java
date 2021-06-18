@@ -2,56 +2,55 @@ package de.tum.in.ase.eist.igt.Controller;
 
 import de.tum.in.ase.eist.igt.Model.SpaceCraft;
 import de.tum.in.ase.eist.igt.View.GameBoardUI;
-import javafx.event.EventHandler;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+
+/**
+ * For some reason our KeyboardInput was not detected when using this class like MouseSteering. Therefore we hot-fixed
+ *  it by implementing the keyboard controls in the GalacticGarbagemenApplication directly.
+ * */
 public class KeyboardInput {
 
-    private SpaceCraft spaceCraft;
+    private final SpaceCraft spaceCraft;
 
     public KeyboardInput(GameBoardUI gameBoardUI, SpaceCraft userSpaceCraft) {
         this.spaceCraft = userSpaceCraft;
-        //gameBoardUI.addEventHandler(KeyEvent.ANY, this::keyPressed);
-        gameBoardUI.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                keyPressed(event);
-            }
-        });
+        gameBoardUI.addEventHandler(KeyEvent.KEY_PRESSED, this::keyPressed);
     }
 
     /**
+     * Handles keyboard input and manipulates the space craft accordingly with acceleration / deceleration and tilting
+     *  operations.
      *
-     * TODO: implement tilting for A and D input
+     * @implNote Hot fixed in GalacticGarbagemenApplication.start() as this method did not recognized the input.
+     *
+     * TODO: add shooting functionality
      * */
-    private void keyPressed(KeyEvent keyInput) {
-        // Point2D spaceCraftPosition = spaceCraft.getPosition();
+    protected void keyPressed(KeyEvent keyInput) {
 
         switch (keyInput.getCode()) {
-            case UP, W -> {
-                spaceCraft.setPosition(spaceCraft.getPosition().getX(), spaceCraft.getPosition().getY() - spaceCraft.getSpeed());
-                spaceCraft.setSpeed(10);
+            case W, UP -> {
+                spaceCraft.accelerate();
                 System.out.println("Up pressed");
             }
             case S, DOWN -> {
-                spaceCraft.setPosition(spaceCraft.getPosition().getX(), spaceCraft.getPosition().getY() + spaceCraft.getSpeed());
-                spaceCraft.setSpeed(10);
+                spaceCraft.decelerate();
                 System.out.println("Down pressed");
             }
             case A, LEFT -> {
-                spaceCraft.setPosition(spaceCraft.getPosition().getX() - spaceCraft.getSpeed(), spaceCraft.getPosition().getY());
-                spaceCraft.setSpeed(10);
+                spaceCraft.setDirection(2);
                 System.out.println("Left pressed");
             }
             case D, RIGHT -> {
-                spaceCraft.setPosition(spaceCraft.getPosition().getX() + spaceCraft.getSpeed(), spaceCraft.getPosition().getY());
-                spaceCraft.setSpeed(10);
+                spaceCraft.setDirection(-2);
                 System.out.println("Right pressed");
             }
         }
 
-        /*double deltaX = clickPosition.getX() - spaceCraftPosition.getX();
+        System.out.println(keyInput.getCharacter());
+
+        /*
+        double deltaX = clickPosition.getX() - spaceCraftPosition.getX();
         deltaX = Math.abs(deltaX);
         double deltaY = clickPosition.getY() - spaceCraftPosition.getY();
         int degree = (int) Math.toDegrees(Math.atan2(deltaY, deltaX));
@@ -62,7 +61,8 @@ public class KeyboardInput {
             degree = ANGLE_270_DEGREES + degree;
         }
 
-        spaceCraft.setDirection(degree);*/
+        spaceCraft.setDirection(degree);
+        */
     }
 
 }

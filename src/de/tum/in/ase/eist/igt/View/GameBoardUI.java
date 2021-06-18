@@ -92,8 +92,11 @@ public class GameBoardUI extends Canvas {
 	private void setupGameBoard() {
 		Dimension2D size = getPreferredSize();
 		this.gameBoard = new GameBoard(size);
-        this.mouseInput = new MouseSteering(this, this.gameBoard.getPlayerSpaceCraft());
-        this.keyboardInput = new KeyboardInput(this, this.gameBoard.getPlayerSpaceCraft());
+
+		// input is currently handled in GalacticGarbagemenApplication.start()
+        /*this.mouseInput = new MouseSteering(this, this.gameBoard.getPlayerSpaceCraft());
+        this.keyboardInput = new KeyboardInput(this, this.gameBoard.getPlayerSpaceCraft());*/
+        
 		widthProperty().set(size.getWidth());
 		heightProperty().set(size.getHeight());
 	}
