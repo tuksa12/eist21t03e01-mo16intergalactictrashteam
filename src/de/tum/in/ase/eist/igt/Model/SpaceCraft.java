@@ -27,6 +27,12 @@ public class SpaceCraft extends MovableObject {
         //this.lifePoints = 3;
     }
 
+    public SpaceCraft(double start_X, double start_Y) {
+        super(start_X, start_Y, MASS, SPACE_CRAFT_WIDTH, SPACE_CRAFT_HEIGHT, SPACE_CRAFT_IMAGE_FILE,
+                INITIAL_SPEED, ACCELERATION, START_DIRECTION);
+        //this.lifePoints = 3;
+    }
+
     /**
      * TODO: determine direction
      * */

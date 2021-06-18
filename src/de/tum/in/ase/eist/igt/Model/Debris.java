@@ -10,7 +10,7 @@ package de.tum.in.ase.eist.igt.Model;
  * */
 public class Debris extends MovableObject{
 
-    private static final String DEBRIS_IMAGE_FILE = "Debris.png";
+    private static final String DEBRIS_IMAGE_FILE = "debris_asteroid.png";
     private static final int DEBRIS_HEIGHT = 25;
     private static final int DEBRIS_WIDTH = 25;
     private static final int MINIMAL_MASS = 10;

@@ -27,7 +27,7 @@ public class GameBoard {
         this.random = new Random();
         this.random.setSeed(RANDOM_SEED);
         this.gameObjects = new ArrayList<GameObject>();
-        SpaceCraft playerCraft = new SpaceCraft();
+        SpaceCraft playerCraft = new SpaceCraft(this.size.getWidth() / 2, this.size.getHeight() / 2);
         this.player = new Player(playerCraft);
         this.player.setup();
         createGameObjects();
