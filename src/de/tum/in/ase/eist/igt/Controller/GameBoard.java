@@ -45,9 +45,8 @@ public class GameBoard {
      *
      * */
     private void createGameObjects() {
-
-        this.gameObjects.add(new Planet(100.0, 100.0, 42, 30,30,"planet.png"));
-        this.gameObjects.add(new Planet(200.0, 200.0, 9000,30,30,"planet-brown.png"));
+        this.gameObjects.add(new Planet(100.0, 100.0, 42, 60,60,"planet.png"));
+        this.gameObjects.add(new Planet(200.0, 200.0, 9000,70,70,"planet-brown.png"));
         this.gameObjects.add(this.player.getSpaceCraft());
     }
 

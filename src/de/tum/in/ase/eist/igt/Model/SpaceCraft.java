@@ -4,10 +4,10 @@ package de.tum.in.ase.eist.igt.Model;
 public class SpaceCraft extends MovableObject {
 
     private int lifePoints;
-    private static final double START_X_COORDINATE = 0.0;
-    private static final double START_Y_COORDINATE = 0.0;
+    private static final double START_X_COORDINATE = 250.0;
+    private static final double START_Y_COORDINATE = 250.0;
     private static final int START_DIRECTION = 90;
-    private static final String SPACE_CRAFT_IMAGE_FILE = "SpaceCraft.png";
+    private static final String SPACE_CRAFT_IMAGE_FILE = "spacecraft.png";
     private static final int SPACE_CRAFT_HEIGHT = 25;
     private static final int SPACE_CRAFT_WIDTH = 25;
     private static final int MASS = 10;

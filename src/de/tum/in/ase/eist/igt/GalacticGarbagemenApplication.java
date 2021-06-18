@@ -5,6 +5,7 @@ import de.tum.in.ase.eist.igt.View.GameToolBar;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -43,6 +44,9 @@ public class GalacticGarbagemenApplication extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.setOnCloseRequest(closeEvent -> gameBoardUI.stopGame());
 		primaryStage.show();
+
+		// d
+        gameBoardUI.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {System.out.println(key.getCharacter()); });
 	}
 
 	/**

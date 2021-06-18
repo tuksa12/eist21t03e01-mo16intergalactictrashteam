@@ -26,25 +26,29 @@ public class KeyboardInput {
      * TODO: implement tilting for A and D input
      * */
     private void keyPressed(KeyEvent keyInput) {
-        Point2D spaceCraftPosition = spaceCraft.getPosition();
+        // Point2D spaceCraftPosition = spaceCraft.getPosition();
 
-        switch(keyInput.getCode()) {
-
-            case UP, W: spaceCraft.setPosition(spaceCraft.getPosition().getX(), spaceCraft.getPosition().getY() - spaceCraft.getSpeed());
+        switch (keyInput.getCode()) {
+            case UP, W -> {
+                spaceCraft.setPosition(spaceCraft.getPosition().getX(), spaceCraft.getPosition().getY() - spaceCraft.getSpeed());
+                spaceCraft.setSpeed(10);
                 System.out.println("Up pressed");
-                break;
-
-            case S, DOWN: spaceCraft.setPosition(spaceCraft.getPosition().getX(), spaceCraft.getPosition().getY() + spaceCraft.getSpeed());
+            }
+            case S, DOWN -> {
+                spaceCraft.setPosition(spaceCraft.getPosition().getX(), spaceCraft.getPosition().getY() + spaceCraft.getSpeed());
+                spaceCraft.setSpeed(10);
                 System.out.println("Down pressed");
-                break;
-
-            case A, LEFT: spaceCraft.setPosition(spaceCraft.getPosition().getX() - spaceCraft.getSpeed(), spaceCraft.getPosition().getY());
+            }
+            case A, LEFT -> {
+                spaceCraft.setPosition(spaceCraft.getPosition().getX() - spaceCraft.getSpeed(), spaceCraft.getPosition().getY());
+                spaceCraft.setSpeed(10);
                 System.out.println("Left pressed");
-                break;
-
-            case D, RIGHT: spaceCraft.setPosition(spaceCraft.getPosition().getX() + spaceCraft.getSpeed(), spaceCraft.getPosition().getY());
+            }
+            case D, RIGHT -> {
+                spaceCraft.setPosition(spaceCraft.getPosition().getX() + spaceCraft.getSpeed(), spaceCraft.getPosition().getY());
+                spaceCraft.setSpeed(10);
                 System.out.println("Right pressed");
-                break;
+            }
         }
 
         /*double deltaX = clickPosition.getX() - spaceCraftPosition.getX();

@@ -38,10 +38,11 @@ public class MouseSteering {
 
 		if (clickPosition.getX() > carPosition.getX()) {
 			degree = ANGLE_90_DEGREES - degree;
+            spaceCraft.setSpeed(spaceCraft.getSpeed() + 1);
 		} else {
 			degree = ANGLE_270_DEGREES + degree;
+            spaceCraft.setSpeed(spaceCraft.getSpeed() - 1);
 		}
-
 		spaceCraft.setDirection(degree);
 	}
 }

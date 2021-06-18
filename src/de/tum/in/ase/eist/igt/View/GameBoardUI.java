@@ -1,11 +1,16 @@
 package de.tum.in.ase.eist.igt.View;
 
+import com.sun.javafx.event.CompositeEventHandler;
 import de.tum.in.ase.eist.igt.Controller.*;
 import de.tum.in.ase.eist.igt.Model.GameObject;
 import javafx.application.Platform;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
@@ -20,14 +25,13 @@ import java.util.TimerTask;
  */
 public class GameBoardUI extends Canvas {
 
-	private static final Color BACKGROUND_COLOR = Color.BLACK;
-
 	/**
 	 * The update period of the game in ms, this gives us 25 fps.
 	 */
 	private static final int UPDATE_PERIOD = 1000 / 25;
-	private static final int DEFAULT_WIDTH = 500;
-	private static final int DEFAULT_HEIGHT = 300;
+	private static final int DEFAULT_WIDTH = 750; // 500
+	private static final int DEFAULT_HEIGHT = 750; // 300
+    private static final Color BACKGROUND_COLOR = Color.BLACK;
 	private static final Dimension2D DEFAULT_SIZE = new Dimension2D(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 	private KeyboardInput keyboardInput;
 	private MouseSteering mouseInput;
@@ -67,12 +71,27 @@ public class GameBoardUI extends Canvas {
 		setupImageCache();
 		this.gameToolBar.updateToolBarStatus(false);
 		paint();
-	}
+		
+		// d try to get keyboard input
+        //this.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {System.out.println(key.getCharacter()); });
+
+        /*this.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) { KeyboardInput.keyPressed(event); } });*/
+
+        /*
+        gameBoardUI.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                keyPressed(event);
+            }
+        });*/
+
+    }
 
 	private void setupGameBoard() {
 		Dimension2D size = getPreferredSize();
 		this.gameBoard = new GameBoard(size);
-		/*this.gameBoard.setAudioPlayer(new AudioPlayer());*/
         this.mouseInput = new MouseSteering(this, this.gameBoard.getPlayerSpaceCraft());
         this.keyboardInput = new KeyboardInput(this, this.gameBoard.getPlayerSpaceCraft());
 		widthProperty().set(size.getWidth());
@@ -90,10 +109,9 @@ public class GameBoardUI extends Canvas {
 	}
 
 	/**
-	 * Sets the car's image.
+	 * Sets the game object image.
 	 *
-	 * @param imageFilePath an image file path that needs to be available in the
-	 *                         resources folder of the project
+	 * @param imageFilePath an image file path that needs to be available in the resources folder of the project
 	 */
 	private Image getImage(String imageFilePath) {
 		URL carImageUrl = getClass().getClassLoader().getResource(imageFilePath);
