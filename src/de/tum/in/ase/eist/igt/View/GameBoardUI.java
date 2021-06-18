@@ -1,9 +1,6 @@
 package de.tum.in.ase.eist.igt.View;
 
-import de.tum.in.ase.eist.igt.Controller.Dimension2D;
-import de.tum.in.ase.eist.igt.Controller.GameBoard;
-import de.tum.in.ase.eist.igt.Controller.MouseSteering;
-import de.tum.in.ase.eist.igt.Controller.Point2D;
+import de.tum.in.ase.eist.igt.Controller.*;
 import de.tum.in.ase.eist.igt.Model.GameObject;
 import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
@@ -32,6 +29,8 @@ public class GameBoardUI extends Canvas {
 	private static final int DEFAULT_WIDTH = 500;
 	private static final int DEFAULT_HEIGHT = 300;
 	private static final Dimension2D DEFAULT_SIZE = new Dimension2D(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	private KeyboardInput keyboardInput;
+	private MouseSteering mouseInput;
 
 	public static Dimension2D getPreferredSize() {
 		return DEFAULT_SIZE;
@@ -74,6 +73,8 @@ public class GameBoardUI extends Canvas {
 		Dimension2D size = getPreferredSize();
 		this.gameBoard = new GameBoard(size);
 		/*this.gameBoard.setAudioPlayer(new AudioPlayer());*/
+        this.mouseInput = new MouseSteering(this, this.gameBoard.getPlayerSpaceCraft());
+        this.keyboardInput = new KeyboardInput(this, this.gameBoard.getPlayerSpaceCraft());
 		widthProperty().set(size.getWidth());
 		heightProperty().set(size.getHeight());
 	}

@@ -2,6 +2,7 @@ package de.tum.in.ase.eist.igt.Controller;
 
 import de.tum.in.ase.eist.igt.Model.SpaceCraft;
 import de.tum.in.ase.eist.igt.View.GameBoardUI;
+import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
@@ -11,7 +12,13 @@ public class KeyboardInput {
 
     public KeyboardInput(GameBoardUI gameBoardUI, SpaceCraft userSpaceCraft) {
         this.spaceCraft = userSpaceCraft;
-        gameBoardUI.addEventHandler(KeyEvent.KEY_PRESSED, this::keyPressed);
+        //gameBoardUI.addEventHandler(KeyEvent.ANY, this::keyPressed);
+        gameBoardUI.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                keyPressed(event);
+            }
+        });
     }
 
     /**
@@ -24,17 +31,20 @@ public class KeyboardInput {
         switch(keyInput.getCode()) {
 
             case UP, W: spaceCraft.setPosition(spaceCraft.getPosition().getX(), spaceCraft.getPosition().getY() - spaceCraft.getSpeed());
+                System.out.println("Up pressed");
                 break;
 
             case S, DOWN: spaceCraft.setPosition(spaceCraft.getPosition().getX(), spaceCraft.getPosition().getY() + spaceCraft.getSpeed());
+                System.out.println("Down pressed");
                 break;
 
             case A, LEFT: spaceCraft.setPosition(spaceCraft.getPosition().getX() - spaceCraft.getSpeed(), spaceCraft.getPosition().getY());
+                System.out.println("Left pressed");
                 break;
 
             case D, RIGHT: spaceCraft.setPosition(spaceCraft.getPosition().getX() + spaceCraft.getSpeed(), spaceCraft.getPosition().getY());
+                System.out.println("Right pressed");
                 break;
-        
         }
 
         /*double deltaX = clickPosition.getX() - spaceCraftPosition.getX();

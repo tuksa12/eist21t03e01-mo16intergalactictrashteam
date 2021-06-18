@@ -6,6 +6,7 @@ import de.tum.in.ase.eist.igt.Model.Planet;
 import de.tum.in.ase.eist.igt.Model.SpaceCraft;
 import de.tum.in.ase.eist.igt.View.GameView;
 
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -28,6 +29,8 @@ public class GameBoard {
 
     private GameOutcome gameOutcome = GameOutcome.OPEN;
 
+    private MouseSteering mouseSteering;
+
     public GameBoard(Dimension2D size) {
         this.size = size;
         this.gameObjects = new ArrayList<GameObject>();
@@ -35,7 +38,6 @@ public class GameBoard {
         this.player = new Player(playerCraft);
         this.player.setup();
         createGameObjects();
-        PlayerInput playerInput = new PlayerInput(player.getSpaceCraft());
     }
 
     /**
@@ -49,6 +51,9 @@ public class GameBoard {
         this.gameObjects.add(this.player.getSpaceCraft());
     }
 
+    public MouseSteering getMouseSteering() {
+        return mouseSteering;
+    }
     public Dimension2D getSize() {
         return size;
     }

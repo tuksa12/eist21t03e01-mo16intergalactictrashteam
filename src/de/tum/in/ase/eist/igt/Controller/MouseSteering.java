@@ -24,12 +24,12 @@ public class MouseSteering {
 	 */
 	public MouseSteering(GameBoardUI gameBoardUI, SpaceCraft userSpaceCraft) {
 		this.spaceCraft = userSpaceCraft;
-		//gameBoardUI.addEventHandler(MouseEvent.MOUSE_PRESSED, this::mousePressed);
+		gameBoardUI.addEventHandler(MouseEvent.MOUSE_PRESSED, this::mousePressed);
 
 	}
 
 	private void mousePressed(MouseEvent clickEvent) {
-		/*Point2D carPosition = spaceCraft.getPosition();
+		Point2D carPosition = spaceCraft.getPosition();
 		Point2D clickPosition = new Point2D(clickEvent.getX(), clickEvent.getY());
 		double deltaX = clickPosition.getX() - carPosition.getX();
 		deltaX = Math.abs(deltaX);
@@ -40,8 +40,8 @@ public class MouseSteering {
 			degree = ANGLE_90_DEGREES - degree;
 		} else {
 			degree = ANGLE_270_DEGREES + degree;
-		}*/
+		}
 
-		//spaceCraft.setDirection(degree);
+		spaceCraft.setDirection(degree);
 	}
 }
