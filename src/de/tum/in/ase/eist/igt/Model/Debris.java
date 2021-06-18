@@ -25,7 +25,8 @@ public class Debris extends MovableObject{
 
 
     public Debris(double startX, double startY, int mass, int initial_speed, int initial_direction) {
-        super(startX, startY, mass, DEBRIS_WIDTH, DEBRIS_HEIGHT, DEBRIS_IMAGE_FILE, initial_speed, ACCELERATION, initial_direction);
+        super(startX, startY, mass, DEBRIS_WIDTH, DEBRIS_HEIGHT, DEBRIS_IMAGE_FILE, Math.max(1, initial_speed),
+                ACCELERATION, initial_direction);
     }
 
     /**

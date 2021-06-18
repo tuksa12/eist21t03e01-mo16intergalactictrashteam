@@ -19,7 +19,7 @@ public class GameBoard {
     // private static final int NUMBER_OF_PLANETS = 3;
     private static final long RANDOM_SEED = 42;
     private static final int MAX_DEBRIS_MASS = 500;
-    private static final int MAX_DEBRIS_SPEED = 21;
+    private static final int MAX_DEBRIS_SPEED = 9;
 
 
     public GameBoard(Dimension2D size) {
