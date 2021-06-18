@@ -3,10 +3,16 @@ package de.tum.in.ase.eist.igt.Model;
 import de.tum.in.ase.eist.igt.Controller.Dimension2D;
 import de.tum.in.ase.eist.igt.Controller.Point2D;
 
+/**
+ * All objects composing this game inherit from this class. Each object in space is modeled with basic physical
+ *  attributes like mass and GUI attributes like position and canvas size.
+ *
+ *
+ * */
 public abstract class GameObject {
 
     private String iconLocation;
-    private int mass;
+    private final int mass;
     protected Point2D position;
     protected Dimension2D size;
 
@@ -18,7 +24,7 @@ public abstract class GameObject {
         this.setIconLocation(iconLocation);
     }
 
-    /* ---------- GETTERS ----------*/
+    /* ---------- GETTERS ---------- */
     public Dimension2D getSize(){
         return size;
     }
@@ -29,10 +35,6 @@ public abstract class GameObject {
 
     public Point2D getPosition() {
         return this.position;
-    }
-
-    public void setPosition(int newX, int newY) {
-        this.position = new Point2D(newX, newY);
     }
 
     public String getIconLocation() {return this.iconLocation; }

@@ -1,6 +1,5 @@
 package de.tum.in.ase.eist.igt.View;
 
-import com.sun.javafx.event.CompositeEventHandler;
 import de.tum.in.ase.eist.igt.Controller.*;
 import de.tum.in.ase.eist.igt.Model.GameObject;
 import javafx.application.Platform;
@@ -34,7 +33,6 @@ public class GameBoardUI extends Canvas {
     private static final Color BACKGROUND_COLOR = Color.BLACK;
 	private static final Dimension2D DEFAULT_SIZE = new Dimension2D(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 	private KeyboardInput keyboardInput;
-	private MouseSteering mouseInput;
 
 	public static Dimension2D getPreferredSize() {
 		return DEFAULT_SIZE;
@@ -93,10 +91,12 @@ public class GameBoardUI extends Canvas {
 		Dimension2D size = getPreferredSize();
 		this.gameBoard = new GameBoard(size);
 
-		// input is currently handled in GalacticGarbagemenApplication.start()
-        /*this.mouseInput = new MouseSteering(this, this.gameBoard.getPlayerSpaceCraft());
-        this.keyboardInput = new KeyboardInput(this, this.gameBoard.getPlayerSpaceCraft());*/
-        
+        /*
+        input is currently handled in GalacticGarbagemenApplication.start()
+        this.mouseInput = new MouseSteering(this, this.gameBoard.getPlayerSpaceCraft());
+        this.keyboardInput = new KeyboardInput(this, this.gameBoard.getPlayerSpaceCraft());
+        */
+
 		widthProperty().set(size.getWidth());
 		heightProperty().set(size.getHeight());
 	}

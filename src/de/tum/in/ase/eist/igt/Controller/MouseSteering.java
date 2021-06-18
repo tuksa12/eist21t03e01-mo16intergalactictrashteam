@@ -5,8 +5,9 @@ import de.tum.in.ase.eist.igt.View.GameBoardUI;
 import javafx.scene.input.MouseEvent;
 
 /**
- * This class is responsible for the handling the MOUSE_PRESSED Event, i.e. the
- * steering of the user's car.
+ * This class is responsible for the handling the MOUSE_PRESSED Event, i.e. the steering of the space craft.
+ *
+ * @deprecated
  */
 public class MouseSteering {
 
@@ -28,6 +29,10 @@ public class MouseSteering {
 
 	}
 
+	/**
+     * Adaptation of Bumpers mousePressed for a somewhat Asteroids like mouse control. We only implemented this approach
+     *  due to the keyboard controls not working for a long time.
+     * */
 	private void mousePressed(MouseEvent clickEvent) {
 		Point2D carPosition = spaceCraft.getPosition();
 		Point2D clickPosition = new Point2D(clickEvent.getX(), clickEvent.getY());

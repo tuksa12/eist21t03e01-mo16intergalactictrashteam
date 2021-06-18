@@ -5,8 +5,8 @@ import de.tum.in.ase.eist.igt.Controller.Point2D;
 
 public abstract class MovableObject extends GameObject {
 
-    protected static final int MAX_ANGLE = 360;
-    protected static final int HALF_ANGLE = MAX_ANGLE / 2;
+    public static final int MAX_ANGLE = 360;
+    public static final int HALF_ANGLE = MAX_ANGLE / 2;
 
     private int direction;
     private int speed;

@@ -1,13 +1,10 @@
 package de.tum.in.ase.eist.igt;
 
-import de.tum.in.ase.eist.igt.Controller.KeyboardInput;
 import de.tum.in.ase.eist.igt.View.GameBoardUI;
 import de.tum.in.ase.eist.igt.View.GameToolBar;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
