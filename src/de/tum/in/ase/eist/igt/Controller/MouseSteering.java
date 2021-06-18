@@ -2,6 +2,7 @@ package de.tum.in.ase.eist.igt.Controller;
 
 import de.tum.in.ase.eist.igt.Model.SpaceCraft;
 import de.tum.in.ase.eist.igt.View.GameBoardUI;
+import javafx.scene.input.MouseEvent;
 
 /**
  * This class is responsible for the handling the MOUSE_PRESSED Event, i.e. the
@@ -27,8 +28,8 @@ public class MouseSteering {
 
 	}
 
-	/*private void mousePressed(MouseEvent clickEvent) {
-		Point2D carPosition = spaceCraft.getPosition();
+	private void mousePressed(MouseEvent clickEvent) {
+		/*Point2D carPosition = spaceCraft.getPosition();
 		Point2D clickPosition = new Point2D(clickEvent.getX(), clickEvent.getY());
 		double deltaX = clickPosition.getX() - carPosition.getX();
 		deltaX = Math.abs(deltaX);
@@ -39,8 +40,8 @@ public class MouseSteering {
 			degree = ANGLE_90_DEGREES - degree;
 		} else {
 			degree = ANGLE_270_DEGREES + degree;
-		}
+		}*/
 
-		spaceCraft.setDirection(degree);
-	}*/
+		//spaceCraft.setDirection(degree);
+	}
 }

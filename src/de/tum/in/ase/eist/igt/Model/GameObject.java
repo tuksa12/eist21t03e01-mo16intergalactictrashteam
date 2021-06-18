@@ -7,8 +7,8 @@ public abstract class GameObject {
 
     private String iconLocation;
     private int mass;
-    private Point2D position;
-    private Dimension2D size;
+    protected Point2D position;
+    protected Dimension2D size;
 
 
     public GameObject(double startX, double startY, int mass, int width, int height, String iconLocation) {
@@ -47,6 +47,10 @@ public abstract class GameObject {
     public void setIconLocation(String iconLocation){
         if (iconLocation == null) throw new NullPointerException("Image location mustn't be null!");
         this.iconLocation = iconLocation;
+    }
+
+    public void setPosition(double x, double y) {
+        position = new Point2D(x, y);
     }
 
 }

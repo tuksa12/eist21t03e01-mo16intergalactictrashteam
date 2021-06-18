@@ -48,8 +48,6 @@ public class GameBoardUI extends Canvas {
 
 	private final GameToolBar gameToolBar;
 
-	private MouseSteering mouseSteering;
-
 	private HashMap<String, Image> imageCache;
 
 	public GameBoardUI(GameToolBar gameToolBar) {
@@ -59,10 +57,6 @@ public class GameBoardUI extends Canvas {
 
 	public GameBoard getGameBoard() {
 		return gameBoard;
-	}
-
-	public MouseSteering getMouseSteering() {
-		return mouseSteering;
 	}
 
 	/**
@@ -82,7 +76,6 @@ public class GameBoardUI extends Canvas {
 		/*this.gameBoard.setAudioPlayer(new AudioPlayer());*/
 		widthProperty().set(size.getWidth());
 		heightProperty().set(size.getHeight());
-		//this.mouseSteering = new MouseSteering(this, this.gameBoard.getPlayerCar());
 	}
 
 	private void setupImageCache() {
@@ -169,7 +162,7 @@ public class GameBoardUI extends Canvas {
 	 * Render the graphics of the whole game by iterating through the cars of the
 	 * game board at render each of them individually.
 	 */
-	private void paint() { //Done Rapha: Make it work for multiple planets
+	private void paint() {
 		getGraphicsContext2D().setFill(BACKGROUND_COLOR);
 		getGraphicsContext2D().fillRect(0, 0, getWidth(), getHeight());
 
