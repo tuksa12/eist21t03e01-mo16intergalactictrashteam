@@ -41,7 +41,6 @@ public class MouseSteering {
 		} else {
 			degree = ANGLE_270_DEGREES + degree;
 		}
-
 		spaceCraft.setDirection(degree);
 	}
 }

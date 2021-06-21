@@ -92,4 +92,8 @@ public abstract class MovableObject extends GameObject {
     public void setOnBoard(boolean onBoard) { this.onBoard = onBoard; }
 
     public void setDirection(int direction) { this.direction = direction; }
+
+    public int getDirection() {
+        return direction;
+    }
 }
