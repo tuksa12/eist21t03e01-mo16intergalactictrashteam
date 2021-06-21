@@ -5,12 +5,22 @@ import de.tum.in.ase.eist.igt.Controller.Point2D;
 
 public abstract class MovableObject extends GameObject {
 
-    protected static final int MAX_ANGLE = 360;
-    protected static final int HALF_ANGLE = MAX_ANGLE / 2;
+    public static final int MAX_ANGLE = 360;
+    public static final int HALF_ANGLE = MAX_ANGLE / 2;
 
     private int direction;
     private int speed;
-    private int acceleration;
+
+    /**
+     * We simplify the formula acceleration = (delta speed) / (delta time) to acceleration = (delta speed) as we are
+     *  modeling discrete time intervals. Therefore let the
+     * */
+    private final int acceleration;
+
+    /**
+     * Describes weather the object is still on the game board. If not this variable is used to tag objects that need to
+     *  be removed.
+     * */
     private boolean onBoard;
 
     public MovableObject(double startX, double startY, int mass, int width, int height, String iconLocation, int speed,
@@ -77,23 +87,32 @@ public abstract class MovableObject extends GameObject {
 
     public int getSpeed() { return speed; }
 
-    public int getAcceleration() { return acceleration; }
+    public int getDirection() { return this.direction; }
 
     /* ----------- SETTERS ---------- */
     public void setSpeed(int speed) { this.speed = speed; }
 
     /**
-     * TODO: increase acceleration
+     * Method for objects that can accelerate on their own. This ability of acceleration is final.
      * */
-    public void setAcceleration(int acceleration) {
-        this.acceleration = acceleration;
-    }
+    public void accelerate() { this.speed += this.acceleration; }
 
-    public void setOnBoard(boolean onBoard) { this.onBoard = onBoard; }
+    /**
+     * Method for objects that can accelerate on their own.
+     * TODO: allow backward acceleration/movement?
+     * */
+    public void decelerate() { this.speed = Math.max(0, this.speed - this.acceleration); }
 
-    public void setDirection(int direction) { this.direction = direction; }
+    /**
+     * Tags objects that are no longer on the game board and can be removed.
+     * */
+    public void tagOffBoard() { this.onBoard = false; }
 
-    public int getDirection() {
-        return direction;
-    }
+    /**
+     * Alters the orientation of an object by adding an angle.
+     *
+     * @param angle The number of radii to tilt the object 360 means a full rotation and will have no effect. Also
+     *               negative values are possible.
+     * */
+    public void setDirection(int angle) { this.direction += angle; }
 }

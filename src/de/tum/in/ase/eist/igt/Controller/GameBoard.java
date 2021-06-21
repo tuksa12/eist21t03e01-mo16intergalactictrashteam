@@ -1,40 +1,33 @@
 package de.tum.in.ase.eist.igt.Controller;
 
-import de.tum.in.ase.eist.igt.Model.Debris;
-import de.tum.in.ase.eist.igt.Model.GameObject;
-import de.tum.in.ase.eist.igt.Model.Planet;
-import de.tum.in.ase.eist.igt.Model.SpaceCraft;
-import de.tum.in.ase.eist.igt.View.GameView;
+import de.tum.in.ase.eist.igt.Model.*;
 
-import java.security.Key;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class GameBoard {
 
-    private static final int NUMBER_OF_DEBRIS = 5;
-    private static final int NUMBER_OF_PLANETS = 3;
-
-    private final List<GameObject> gameObjects;
-
-    private Player player;
-
-    private GameView gameView;
-
-    private final Dimension2D size;
-
-    private boolean running;
-
+    // core functionality
     private GameOutcome gameOutcome = GameOutcome.OPEN;
+    private boolean running;
+    private final Dimension2D size;
+    private final List<GameObject> gameObjects;
+    private final Player player;
+    private final Random random;
 
-    private MouseSteering mouseSteering;
+    // initialisation variables
+    private static final int NUMBER_OF_DEBRIS = 5;
+    // private static final int NUMBER_OF_PLANETS = 3;
+    private static final long RANDOM_SEED = 42;
+    private static final int MAX_DEBRIS_MASS = 500;
+    private static final int MAX_DEBRIS_SPEED = 9;
+
 
     public GameBoard(Dimension2D size) {
         this.size = size;
+        this.random = new Random();
+        this.random.setSeed(RANDOM_SEED);
         this.gameObjects = new ArrayList<GameObject>();
-        SpaceCraft playerCraft = new SpaceCraft();
+        SpaceCraft playerCraft = new SpaceCraft(this.size.getWidth() / 2, this.size.getHeight() / 2);
         this.player = new Player(playerCraft);
         this.player.setup();
         createGameObjects();
@@ -45,15 +38,20 @@ public class GameBoard {
      *
      * */
     private void createGameObjects() {
-
-        this.gameObjects.add(new Planet(100.0, 100.0, 42, 30,30,"planet.png"));
-        this.gameObjects.add(new Planet(200.0, 200.0, 9000,30,30,"planet-brown.png"));
+        // spacecraft
         this.gameObjects.add(this.player.getSpaceCraft());
+
+        // planets
+        this.gameObjects.add(new Planet(442.0, 442.0, 42, 260,260,"planet.png"));
+        this.gameObjects.add(new Planet(100.0, 78.0, 9000,140,140,"planet-brown.png"));
+
+        // generate debris of semi random size, velocity and start point
+        for (int i = 0; i < NUMBER_OF_DEBRIS; i++){
+            this.gameObjects.add(new Debris(random.nextInt((int) size.getWidth()), random.nextInt((int) size.getHeight()),
+                    random.nextInt(MAX_DEBRIS_MASS), random.nextInt(MAX_DEBRIS_SPEED), random.nextInt(MovableObject.MAX_ANGLE)));
+        }
     }
 
-    public MouseSteering getMouseSteering() {
-        return mouseSteering;
-    }
     public Dimension2D getSize() {
         return size;
     }
@@ -100,6 +98,12 @@ public class GameBoard {
         return debris;
     }
 
+
+    /**
+     * Move game objects and detect collisions.
+     *
+     * TODO: implement collision detection
+     * */
     public void moveGameObjects() {
         // update the positions of the player car and the autonomous cars
         for (Debris debris : this.getDebris()) {
